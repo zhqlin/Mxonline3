@@ -40,6 +40,9 @@ INSTALLED_APPS = [
 
     # myapps
     'users',
+    'courses',
+    'operation',
+    'organization',
 ]
 
 # 此处重载是为了使得UserProfile生效
