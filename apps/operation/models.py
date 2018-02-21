@@ -18,6 +18,9 @@ class UserAsk(models.Model):
         verbose_name = '用户咨询'
         verbose_name_plural = verbose_name
 
+    def __str__(self):
+        return "{0}询问《{1}》".format(self.name, self.course_name)
+
 
 # 课程评价
 class CourseComments(models.Model):
@@ -29,6 +32,9 @@ class CourseComments(models.Model):
     class Meta:
         verbose_name = '课程评价'
         verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return '{0}对《{1}》的评价'.format(self.user, self.course)
 
 
 # 用户收藏（课程、讲师、机构）
@@ -53,6 +59,9 @@ class UserFavorite(models.Model):
         verbose_name = '用户收藏'
         verbose_name_plural = verbose_name
 
+    def __str__(self):
+        return "{0}的{1}收藏".format(self.user, self.fav_type)
+
 
 # 用户消息表
 class UserMessage(models.Model):
@@ -68,13 +77,19 @@ class UserMessage(models.Model):
         verbose_name = '用户消息'
         verbose_name_plural = verbose_name
 
+    def __str__(self):
+        return "发送给{0}的消息".format(self.user)
+
 
 # 用户课程表
 class UserCourse(models.Model):
     course = models.ForeignKey(Course, verbose_name='课程', on_delete='CASCADE')
-    User = models.ForeignKey(UserProfile, verbose_name='用户', on_delete='CASCADE')
+    user = models.ForeignKey(UserProfile, verbose_name='用户', on_delete='CASCADE')
     add_time = models.DateTimeField(default=datetime.now, verbose_name='添加时间')
 
     class Meta:
         verbose_name = '用户课程'
         verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return '{0}参加的《{1}》课程'.format(self.user, self.course)
