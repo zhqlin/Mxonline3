@@ -15,6 +15,7 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
+sys.path.insert(0, os.path.join(BASE_DIR, 'extra_apps'))
 
 
 # Quick-start development settings - unsuitable for production
@@ -44,6 +45,10 @@ INSTALLED_APPS = [
     'courses',
     'operation',
     'organization',
+
+    # other apps
+    'xadmin',
+    'crispy_forms',
 ]
 
 # 此处重载是为了使得UserProfile生效
