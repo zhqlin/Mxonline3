@@ -26,12 +26,13 @@ class UserProfile(AbstractUser):
     # 地址
     address = models.CharField(max_length=100, verbose_name='地址', default='')
     # 电话
-    mobile = models.CharField(max_length=11, null=True, blank=True)
+    mobile = models.CharField(max_length=11, verbose_name='手机', null=True, blank=True)
     # 头像 默认使用default.png
     image = models.ImageField(
         upload_to='image/%Y/%m',
         default='image/default.png',
-        max_length=100
+        max_length=100,
+        verbose_name='头像'
     )
 
     # meta信息，级后台栏目名
