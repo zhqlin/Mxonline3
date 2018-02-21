@@ -1,7 +1,11 @@
 from django.db import models
+from datetime import datetime
+
 from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
+
+
 class UserProfile(AbstractUser):
     # 自定义的性别选择规则
     GENDER_CHOICES = (
@@ -38,3 +42,39 @@ class UserProfile(AbstractUser):
     # 重载str方法，打印示例会打印出username, username继承自默认的Abstractuser
     def __str__(self):
         return self.username
+
+
+# 邮箱验证码
+class EmailVerifyRecord(models.Model):
+    SEND_CHOICES = (
+        ('register', '注册'),
+        ('forget', '找回密码')
+    )
+    code = models.CharField(max_length=20, verbose_name='验证码')
+    # 未设置null=true blank=true，默认不可为空
+    email = models.EmailField(max_length=50, verbose_name='邮箱')
+    send_type = models.CharField(choices=SEND_CHOICES, max_length=10, verbose_name='发送类别')
+    # 这里将now的()去掉，不然会固定为编译时间，而不是根据实际实例化时间
+    send_time = models.DateTimeField(default=datetime.now, verbose_name='发送时间')
+
+    class Meta:
+        verbose_name = '邮箱验证码'
+        verbose_name_plural = verbose_name
+
+
+# 轮播图model
+class Banner(models.Model):
+    title = models.CharField(max_length=100, verbose_name='标题')
+    image = models.ImageField(
+        upload_to='banner/%Y/%m',
+        verbose_name='轮播图',
+        max_length=100
+    )
+    url = models.URLField(max_length=200, verbose_name='访问地址')
+    # 默认index大靠后，想要靠前修改index值
+    index = models.IntegerField(default=100, verbose_name='排序')
+    add_time = models.DateTimeField(default=datetime.now, verbose_name='添加时间')
+
+    class Meta:
+        verbose_name = '轮播图'
+        verbose_name_plural = verbose_name
