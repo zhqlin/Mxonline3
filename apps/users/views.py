@@ -1,10 +1,12 @@
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.backends import ModelBackend
+from django.views.generic.base import View
 # 用于并集运算
 from django.db.models import Q
 
 from .models import UserProfile
+from .forms import LoginForm
 
 
 # 重载方法，实现邮箱账号均可登录
@@ -21,6 +23,8 @@ class CustomBackend(ModelBackend):
             return None
 
 # 用户登录校验
+'''
+#采用函数方式实现验证
 def user_login(request):
     # 登录提交表单为POST
     if request.method == 'POST':
@@ -43,3 +47,23 @@ def user_login(request):
     # 获取登录页面为GET
     elif request.method == 'GET':
         return render(request, 'login.html', {})
+'''
+# 采用类方式实现
+class LoginView(View):
+    # 直接调用get方法，免去判断
+    def get(self, request):
+        return render(request, 'login.html', {})
+    def post(self, request):
+        # 自动进行字段合规性验证(来自forms中规则）
+        login_form = LoginForm(request.POST)
+        if login_form.is_valid():
+            user_name = request.POST.get('username', '')
+            pass_word = request.POST.get('password', '')
+            user = authenticate(username=user_name, password=pass_word)
+            if user is not None:
+                login(request, user)
+                return render(request, 'index.html')
+            else:
+                return render(request, 'login.html', {'msg': '用户名或密码错误！', 'login_form': login_form})
+        else:
+            return render(request, 'login.html', {'login_form': login_form})
