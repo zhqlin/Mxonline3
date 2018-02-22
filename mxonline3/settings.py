@@ -54,6 +54,11 @@ INSTALLED_APPS = [
 # 此处重载是为了使得UserProfile生效
 AUTH_USER_MODEL = 'users.UserProfile'
 
+# 设置邮箱和y用户名均可登录
+AUTHENTICATION_BACKENDS = (
+    'users.views.CustomBackend',
+)
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
