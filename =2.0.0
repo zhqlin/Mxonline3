@@ -1,0 +1,6 @@
+Collecting django-reversion
+  Downloading django_reversion-2.0.13-py2.py3-none-any.whl (85kB)
+Requirement already satisfied: django>=1.8 in /Users/zhanglin/.virtualenvs/mxonline3/lib/python3.5/site-packages (from django-reversion)
+Requirement already satisfied: pytz in /Users/zhanglin/.virtualenvs/mxonline3/lib/python3.5/site-packages (from django>=1.8->django-reversion)
+Installing collected packages: django-reversion
+Successfully installed django-reversion-2.0.13
