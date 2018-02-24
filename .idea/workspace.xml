@@ -477,7 +477,14 @@
       <option name="project" value="LOCAL" />
       <updated>1519479213048</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="完成Django templates的继承关系了解，机构列表展示页。对应7-1 &amp; 2">
+      <created>1519487039938</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1519487039938</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TodoView">
@@ -539,7 +546,8 @@
     <MESSAGE value="双机同步" />
     <MESSAGE value="注册功能实现完毕，流程:注册，发邮件，激活，登录。对应6-6,7,8,9,10" />
     <MESSAGE value="忘记密码重置功能实现完毕，并进行了必要的测试。对应6-11,6-12&#10;遗留问题：登录缺少账号是否激活的验证，待后续完成" />
-    <option name="LAST_COMMIT_MESSAGE" value="忘记密码重置功能实现完毕，并进行了必要的测试。对应6-11,6-12&#10;遗留问题：登录缺少账号是否激活的验证，待后续完成" />
+    <MESSAGE value="完成Django templates的继承关系了解，机构列表展示页。对应7-1 &amp; 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="完成Django templates的继承关系了解，机构列表展示页。对应7-1 &amp; 2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
