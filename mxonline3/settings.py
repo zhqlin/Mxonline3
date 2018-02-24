@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     # other apps
     'xadmin',
     'crispy_forms',
+    'captcha',
 ]
 
 # 此处重载是为了使得UserProfile生效
@@ -148,3 +149,12 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
+
+
+# smtp 发送邮件
+EMAIL_HOST = "smtp.126.com"
+EMAIL_PORT = 25
+EMAIL_HOST_USER = "hotpig@126.com"
+EMAIL_HOST_PASSWORD = "ifeng@126.com"
+EMAIL_USE_TLS = True
+EMAIL_FROM = "hotpig@126.com"
