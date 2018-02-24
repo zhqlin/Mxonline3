@@ -19,7 +19,7 @@ from django.views.generic import TemplateView
 
 import xadmin
 # from users.views import user_login
-from users.views import LoginView, RegisterView, ActiveUserView
+from users.views import LoginView, RegisterView, ActiveUserView, ForgetPwdView, ResetView, ModifyPwdView
 import captcha
 
 urlpatterns = [
@@ -33,4 +33,7 @@ urlpatterns = [
     path('register', RegisterView.as_view(), name='register'),
     path('captcha/', include('captcha.urls')),
     path('active/<slug:active_code>', ActiveUserView.as_view(), name='active'),
+    path('forget/', ForgetPwdView.as_view(), name='forget_pwd'),
+    path('reset/<slug:active_code>', ResetView.as_view(), name='reset_pwd'),
+    path('modify_pwd/', ModifyPwdView.as_view(), name='modify_pwd'),
 ]
