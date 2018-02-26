@@ -6,6 +6,7 @@ from django.contrib.auth.models import AbstractUser
 # Create your models here.
 
 
+# 重写用户信息
 class UserProfile(AbstractUser):
     # 自定义的性别选择规则
     GENDER_CHOICES = (
@@ -64,6 +65,7 @@ class EmailVerifyRecord(models.Model):
 
     def __str__(self):
         return '{0}({1})'.format(self.code, self.email)
+
 
 # 轮播图model
 class Banner(models.Model):
