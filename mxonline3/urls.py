@@ -16,11 +16,13 @@ Including another URLconf
 # from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
+from django.views.static import serve
 
 import xadmin
 # from users.views import user_login
 from users.views import LoginView, RegisterView, ActiveUserView, ForgetPwdView, ResetView, ModifyPwdView
 from organization.views import OrgView
+from mxonline3.settings import MEDIA_ROOT
 # import captcha
 
 urlpatterns = [
@@ -38,4 +40,6 @@ urlpatterns = [
     path('reset/<slug:active_code>', ResetView.as_view(), name='reset_pwd'),
     path('modify_pwd/', ModifyPwdView.as_view(), name='modify_pwd'),
     path('org_list/', OrgView.as_view(), name='org_list'),
+    # 配置上传文件的处置函数
+    path('media/<path:path>', serve, {'document_root': MEDIA_ROOT}),
 ]

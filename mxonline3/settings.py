@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'xadmin',
     'crispy_forms',
     'captcha',
+    'pure_pagination',
 ]
 
 # 此处重载是为了使得UserProfile生效
@@ -84,6 +85,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
             ],
         },
     },
@@ -150,6 +152,11 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
+# 设置上传文件路径
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 # smtp 发送邮件
 EMAIL_HOST = "smtp.126.com"
@@ -158,3 +165,13 @@ EMAIL_HOST_USER = "hotpig@126.com"
 EMAIL_HOST_PASSWORD = ""
 EMAIL_USE_TLS = True
 EMAIL_FROM = "hotpig@126.com"
+
+# 设置分页参数
+PAGINATION_SETTINGS = {
+    # 总共会显示多少个page（包括省略号，包括两边和中间的）
+    'PAGE_RANGE_DISPLAYED': 10,
+    # 旁边会显示多少个page
+    'MARGIN_PAGES_DISPLAYED': 2,
+    # 当输入页数不合法是否要跳到第一页
+    'SHOW_FIRST_PAGE_WHEN_INVALID': True,
+}

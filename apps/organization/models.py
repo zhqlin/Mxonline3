@@ -3,6 +3,7 @@ from datetime import datetime
 
 # Create your models here.
 
+
 # 城市字典
 class CityDict(models.Model):
     name = models.CharField(max_length=20, verbose_name='城市')
@@ -20,14 +21,20 @@ class CityDict(models.Model):
 
 # 课程机构
 class CourseOrg(models.Model):
+    ORG_CATEGORY = (
+        ('pxjg', '培训机构'),
+        ('gx', '高校'),
+        ('gr', '个人')
+    )
     name = models.CharField(max_length=50, verbose_name='机构名称')
     # 机构描述，后面会替换为富文本展示
     desc = models.TextField(verbose_name='机构描述')
+    category = models.CharField(max_length=4, choices=ORG_CATEGORY, verbose_name='机构类别', default='pxjg')
     click_nums = models.IntegerField(default=0, verbose_name='点击数')
     fav_nums = models.IntegerField(default=0, verbose_name='收藏数')
     image = models.ImageField(
         upload_to='org/%Y/%m',
-        verbose_name='封面图',
+        verbose_name='Logo',
         max_length=100
     )
     address = models.CharField(max_length=150, verbose_name='机构地址')
